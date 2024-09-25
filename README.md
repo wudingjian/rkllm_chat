@@ -52,7 +52,7 @@ services:
 ~~~ liunx
 docker-compose up -d
 ~~~
-#### 3. [魔塔](https://mota.com) 或[Hugging Face](https://huggingface.co)下载模型
+#### 3. [魔塔](https://www.modelscope.cn/) 或[Hugging Face](https://huggingface.co)下载模型
 模型放在下载在 ./model 目录
 
 #### 4. 下载转换python程序到./model
@@ -62,11 +62,14 @@ https://github.com/airockchip/rknn-llm/blob/main/rkllm-toolkit/examples/huggingf
 #### 5. 修改test.py中的模型路径
 
 modelpath = '/root/ws/Qwen2.5-3B-Instruct'
+
 其中“/root/ws/”为容器内的路径，“Qwen2.5-3B-Instruct” 为下载的模型文件夹
 
 #### 6. 修改test.py中的生成转换模型的名称和路径
 
-ret = llm.export_rkllm("./Qwen2.5-3B.rkllm") # 当前目录（./model）中生成Qwen2.5-3B.rkllm
+ret = llm.export_rkllm("./Qwen2.5-3B.rkllm") 
+
+当前目录（./model）中生成Qwen2.5-3B.rkllm
 
 #### 7. 转换模型
 ##### 进入容器内部：
