@@ -155,8 +155,8 @@ gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu；下载路径为：GCC_10.2 
 放在 root 目录
 
 #### 修改配置文件
-./rkllm_api_demo/src/main.cpp
-中
+修改./rkllm_api_demo/src/main.cpp中的两个参数
+
 `param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3`
     
 `param.use_gpu = false;  # 禁止gpu加速`
