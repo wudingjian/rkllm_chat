@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  rkllm_server:
+    image: jsntwdj/rkllm_chat:1.0.1
+    container_name: rkllm_chat
+    restart: unless-stopped
+    privileged: true
+    devices:
+      - /dev:/dev
+    volumes:
+      - ./model:/rkllm_server/model  # rkllm模型文件目录
+    ports:
+      - "8080:8080" # 端口自行修改
+    command: >
+      sh -c "python3 gradio_server.py --target_platform rk3588 --rkllm_model_path /rkllm_server/model/Qwen2.5-3B.rkllm" #  rkllm模型文件名称自行修改
