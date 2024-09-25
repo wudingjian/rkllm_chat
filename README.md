@@ -102,7 +102,7 @@ cat /sys/kernel/debug/rknpu/version
 
 # 四、下载 转化后的.rkllm模型文件 
 
-如果不转换模型，可以直接转好后的rkllm模型
+如果不转换模型（跳过“二、模型转换”），可以直接下载转好后的rkllm模型
 
 例如：Qwen2.5-3B.rkllm 
 
@@ -139,8 +139,55 @@ docker-compose up -d
 ~~~
 # 六、聊天web界面
 
-浏览器访问 http://容器ip:8080
+## 浏览器访问 http://容器ip:8080
 
-# 七、FAQ
+## 可选其他聊天方式（ssh中演示的demo）
+### 1. rkllm_api_demo 编译(在x86 pc上编译)
+#### 下载rkllm_api_demo
+git clone https://github.com/airockchip/rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
+
+
+#### 下载 gcc 编译工具
+使用 RKLLM Runtime 的过程中，需要注意 gcc 编译工具的版本。推荐使用交叉编译工具
+gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu；下载路径为：GCC_10.2 交叉编译工具下载
+地址：https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu.tar.xz
+
+放在 root 目录
+
+#### 修改配置文件
+./rkllm_api_demo/src/main.cpp
+中
+    param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3
+    param.use_gpu = false;  # 禁止gpu加速
+
+#### 构建
+确保 `build-linux.sh` 脚本中的 `GCC_COMPILER_PATH` 选项配置正确：
+```sh
+GCC_COMPILER_PATH=~/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu
+```
+要执行，请运行：
+```bash
+bash build-linux.sh
+```
+rk3588 上的可执行程序llm_demo，在./rkllm_api_demo/build/build_linux_aarch64_Release/
+
+
+### 3. RK3588设备安装rkllm_api_demo
+将编译好的 `llm_demo` 文件和 `librkllmrt.so` 文件推送到RK3588设备：
+```bash
+编译好的 ./rkllm_api_demo/build/build_linux_aarch64_Release/llm_demo
+文件复制到 ~/llm  #目录自行确定
+
+下载 https://github.com/airockchip/rknn-llm/blob/main/rkllm-runtime/runtime/Linux/librkllm_api/aarch64/librkllmrt.so 
+文件复到/usr/lib/librkllmrt.so
+```
+### 运行
+~~~ ssh
+cd ~/llm
+taskset f0 ./llm_demo ./model/Qwen2.5-3B.rkllm  # "./model/Qwen2.5-3B.rkllm " 为转换好的模型路径
+~~~
+输出聊天对话界面
+
+# 八、FAQ
 
 FAQ：https://github.com/wudingjian/rkllm_chat/issues
