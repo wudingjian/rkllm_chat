@@ -27,11 +27,10 @@ RKLLM 可以帮助用户快速将 LLM 模型部署到 Rockchip 芯片中，目�
   - [X] [InternLM2 1.8B](https://huggingface.co/internlm/internlm2-chat-1_8b/tree/ecccbb5c87079ad84e5788baa55dd6e21a9c614d)
   - [X] [MiniCPM 2B](https://huggingface.co/openbmb/MiniCPM-2B-sft-bf16/tree/79fbb1db171e6d8bf77cdb0a94076a43003abd9e)
 
-# 二、模型转换
-## RKLLM-Toolkit容器转换工具
+# 二、模型转换（RKLLM-Toolkit容器转换工具）
 要使用 RKNPU，用户需要先在 x86 工作站上运行 RKLLM-Toolkit 容器转换工具，将训练好的模型转换为 RKLLM 格式的模型，然后在开发板上使用 RKLLM C API 进行推理
 ` 内存要大于32G 否则会失败，转换前一定要关闭其他应用，以免资源不足，转换失败 `
-### 1. docker-compose.yml 
+## 1. docker-compose.yml 
 ~~~ docker
 version: '3.8'
 
@@ -48,39 +47,39 @@ services:
     tty: true         # -t
     command: /bin/bash
 ~~~
-### 2. 启用
+## 2. 启用
 ~~~ liunx
 docker-compose up -d
 ~~~
-#### 3. [魔塔](https://www.modelscope.cn/) 或[Hugging Face](https://huggingface.co)下载模型
+## 3. [魔塔](https://www.modelscope.cn/) 或[Hugging Face](https://huggingface.co)下载模型
 模型放在下载在 ./model 目录
 
-#### 4. 下载转换python程序到./model
+## 4. 下载转换python程序到./model
 
 https://github.com/airockchip/rknn-llm/blob/main/rkllm-toolkit/examples/huggingface/test.py
 
-#### 5. 修改test.py中的模型路径
+## 5. 修改test.py中的模型路径
 
 modelpath = '/root/ws/Qwen2.5-3B-Instruct'
 
 其中“/root/ws/”为容器内的路径，“Qwen2.5-3B-Instruct” 为下载的模型文件夹
 
-#### 6. 修改test.py中的生成转换模型的名称和路径
+## 6. 修改test.py中的生成转换模型的名称和路径
 
 ret = llm.export_rkllm("./Qwen2.5-3B.rkllm") 
 
 当前目录（./model）中生成Qwen2.5-3B.rkllm
 
-#### 7. 转换模型
-##### 进入容器内部：
+## 7. 转换模型
+### 进入容器内部：
 ~~~ liunx
  docker exec -it rk3588_llm /bin/bash
 ~~~
-##### 进入模型文件夹
+### 进入模型文件夹
 ~~~ liunx
 cd /root/ws
 ~~~
-##### 运行转换
+### 运行转换
 ~~~ liunx
 python3 test.py
 ~~~
