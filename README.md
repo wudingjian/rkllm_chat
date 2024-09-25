@@ -29,7 +29,9 @@ RKLLM 可以帮助用户快速将 LLM 模型部署到 Rockchip 芯片中，本�
 
 # 二、模型转换（RKLLM-Toolkit容器转换工具）
 要使用 RKNPU，用户需要先在 x86 工作站上运行 RKLLM-Toolkit 容器转换工具，将训练好的模型转换为 RKLLM 格式的模型，然后在开发板上使用 RKLLM C API 进行推理
+
 `★内存要大于32G 否则会失败，转换前一定要关闭其他应用，以免资源不足，转换失败`
+
 `★本文有第三章节有转换好的模型供下载`
 
 ## 1. docker-compose.yml 
