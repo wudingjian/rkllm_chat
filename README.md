@@ -117,7 +117,7 @@ cat /sys/kernel/debug/rknpu/version
 
 下载后的模型文件放在./model目录下
 
-# 五、docker-compose.yml 
+# 五、rk3588开发板部署LLM服务端 docker-compose.yml 
 
 ~~~ docker
 version: '3.8'
@@ -145,31 +145,31 @@ docker-compose up -d
 ~~~
 # 六、聊天web界面
 
-## (一)浏览器访问 http://ip:8080
+浏览器访问 `http://ip:8080`
 
-## (二)可选其他聊天方式（ssh中演示的demo）
-### 1. rkllm_api_demo 编译(在x86 pc上编译)
-#### 下载rkllm_api_demo
+# 七、rkllm_api_demo(可选其他交互方式)（ssh中演示的demo）
+## 1. rkllm_api_demo 编译(在x86 pc上编译)
+### 下载rkllm_api_demo
 ~~~ liunx
 git clone --no-checkout https://github.com/airockchip/rknn-llm.git
 cd /rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
 ~~~
 
-#### 下载 gcc 编译工具
+### 下载 gcc 编译工具
 使用 RKLLM Runtime 的过程中，需要注意 gcc 编译工具的版本。推荐使用交叉编译工具
 gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu；下载路径为：GCC_10.2 交叉编译工具下载
 地址：https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu.tar.xz
 
 放在 root 目录
 
-#### 修改配置文件
+### 修改配置文件
 修改./rkllm_api_demo/src/main.cpp中的两个参数
 
 `param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3`
     
 `param.use_gpu = false;  # 禁止gpu加速`
 
-#### 构建
+### 构建
 确保 `build-linux.sh` 脚本中的 `GCC_COMPILER_PATH` 选项配置正确：
 ```sh
 GCC_COMPILER_PATH=~/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu
@@ -181,7 +181,7 @@ bash build-linux.sh
 编译生成的rk3588 上的可执行程序llm_demo目录在./rkllm_api_demo/build/build_linux_aarch64_Release/
 
 
-### 3. RK3588设备安装rkllm_api_demo
+## 3. RK3588开发板设备安装rkllm_api_demo
 将编译好的 `llm_demo` 文件和 `librkllmrt.so` 文件推送到RK3588设备：
 ```bash
 编译好的 ./rkllm_api_demo/build/build_linux_aarch64_Release/llm_demo
@@ -191,7 +191,7 @@ bash build-linux.sh
 文件复制到 ~/llm  #目录自行确定
 
 
-使用 wget 下载文件
+使用 wget 下载librkllmrt.so文件
 ~~~ liunx
 # 使用 wget 下载librkllmrt.so文件
 wget https://raw.githubusercontent.com/airockchip/rknn-llm/main/rkllm-runtime/runtime/Linux/librkllm_api/aarch64/librkllmrt.so
@@ -200,7 +200,7 @@ cp librkllmrt.so /usr/lib/librkllmrt.so
 ~~~
 
 ```
-### 运行
+## 4. 运行demo
 ~~~ ssh
 # 程序目录
 cd ~/llm
