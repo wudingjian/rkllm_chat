@@ -3,7 +3,7 @@ https://github.com/airockchip/rknn-llm
 
 
 # 一、RKLLM 简介
-RKLLM 可以帮助用户快速将 LLM 模型部署到 Rockchip 芯片中，目前支持芯片：rk3588/rk3576，整体框架如下：
+RKLLM 可以帮助用户快速将 LLM 模型部署到 Rockchip 芯片中，本仓库所述目前支持芯片：rk3588，整体框架如下：
 
 ![Framework](https://github.com/airockchip/rknn-llm/raw/main/res/framework.jpg)
 
