@@ -3,7 +3,7 @@
 ### 1. 修改 gradio_server.py, 禁用 GPU 进行 prefill 加速
 `rknnllm_param.use_gpu = False`
 
-### 2.设置启动命令
+### 2.Dockerfile设置启动命令
 ~~~docker
 CMD ["sh", "-c", "python3 gradio_server.py --target_platform rk3588 --rkllm_model_path /rkllm_server/model/Qwen2.5-3B.rkllm"]
 ~~~
@@ -29,7 +29,7 @@ python3 chat_api_gradio.py
 ## 服务端
 ### 1.修改 flask_server.py, 禁用 GPU 进行 prefill 加速
 `rknnllm_param.use_gpu = False`
-### 2.设置启动命令
+### 2.Dockerfile设置启动命令
 ~~~docker
 CMD ["sh", "-c", "python3 flask_server.py --target_platform rk3588 --rkllm_model_path /rkllm_server/model/Qwen2.5-3B.rkllm"]
 ~~~
