@@ -1,3 +1,7 @@
+Rk3588平台用 NPU跑大模型，rknn-llm 服务端
+https://github.com/airockchip/rknn-llm
+
+
 # 一、RKNPU driver
 
 由于所提供的 RKLLM 所需要的 NPU 内核版本较高，用户在板端使用 RKLLM Runtime 进行模型
