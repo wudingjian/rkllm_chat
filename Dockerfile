@@ -31,8 +31,5 @@ WORKDIR /rkllm_server
 # 暴露端口
 EXPOSE 8080
 
-# 设置启动命令
-CMD ["sh", "-c", "python3 gradio_server.py --target_platform rk3588 --rkllm_model_path /rkllm_server/model/$rkllm_model"]
-
 # 清理安装过程中产生的缓存和临时文件
 RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
