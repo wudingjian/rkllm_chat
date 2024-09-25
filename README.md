@@ -55,8 +55,9 @@ docker-compose up -d
 模型放在下载在 ./model 目录
 
 ## 4. 下载转换python程序到./model
-
-https://github.com/airockchip/rknn-llm/blob/main/rkllm-toolkit/examples/huggingface/test.py
+~~~ liunx
+wget https://raw.githubusercontent.com/airockchip/rknn-llm/main/rkllm-toolkit/examples/huggingface/test.py
+~~~
 
 ## 5. 修改test.py中的模型路径
 
@@ -88,7 +89,8 @@ python3 test.py
 # 三、RK3588 的 RKNPU driver 驱动
 
 由于所提供的 RKLLM 所需要的 NPU 内核版本较高，用户在板端使用 RKLLM Runtime 进行模型
-推理前，首先需要确认板端的 NPU 内核是否为 v0.9.6 版本，具体的查询命令如下：
+推理前，首先需要确认板端的 NPU 内核是否为 v0.9.6 版本（https://github.com/airockchip/rknn-llm/tree/main/rknpu-driver）
+具体的查询命令如下：
 ~~~ liunx
 # 板端执行以下命令，查询 NPU 内核版本
 cat /sys/kernel/debug/rknpu/version
@@ -144,8 +146,10 @@ docker-compose up -d
 ## (二)可选其他聊天方式（ssh中演示的demo）
 ### 1. rkllm_api_demo 编译(在x86 pc上编译)
 #### 下载rkllm_api_demo
-git clone https://github.com/airockchip/rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
-
+~~~ liunx
+git clone --no-checkout https://github.com/airockchip/rknn-llm.git
+cd /rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
+~~~
 
 #### 下载 gcc 编译工具
 使用 RKLLM Runtime 的过程中，需要注意 gcc 编译工具的版本。推荐使用交叉编译工具
@@ -177,15 +181,26 @@ bash build-linux.sh
 将编译好的 `llm_demo` 文件和 `librkllmrt.so` 文件推送到RK3588设备：
 ```bash
 编译好的 ./rkllm_api_demo/build/build_linux_aarch64_Release/llm_demo
+仓库中有编译好的 /rkllm_api_demo/llm_demo
 文件复制到 ~/llm  #目录自行确定
 
-下载 https://github.com/airockchip/rknn-llm/blob/main/rkllm-runtime/runtime/Linux/librkllm_api/aarch64/librkllmrt.so 
-文件复到/usr/lib/librkllmrt.so
+
+使用 wget 下载文件
+~~~ liunx
+# 使用 wget 下载librkllmrt.so文件
+wget https://raw.githubusercontent.com/airockchip/rknn-llm/main/rkllm-runtime/runtime/Linux/librkllm_api/aarch64/librkllmrt.so
+# 使用 cp 命令将文件复制到 /usr/lib/ 目录
+cp librkllmrt.so /usr/lib/librkllmrt.so
+~~~
+
 ```
 ### 运行
 ~~~ ssh
+# 程序目录
 cd ~/llm
-taskset f0 ./llm_demo ./model/Qwen2.5-3B.rkllm  # "./model/Qwen2.5-3B.rkllm " 为转换好的模型路径
+
+# "./model/Qwen2.5-3B.rkllm " 为转换好的模型路径
+taskset f0 ./llm_demo ./model/Qwen2.5-3B.rkllm  
 ~~~
 输出聊天对话界面
 
