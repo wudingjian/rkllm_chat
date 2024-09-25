@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rk3588_llm:
+    image: kaylor/rk3588_llm
+    platform: linux/amd64
+    container_name: rk3588_llm
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - ./model:/root/ws
+    stdin_open: true  # -i
+    tty: true         # -t
+    command: /bin/bash
