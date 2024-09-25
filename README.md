@@ -214,3 +214,4 @@ taskset f0 ./llm_demo ./model/Qwen2.5-3B.rkllm
 # 八、FAQ
 
 FAQ：https://github.com/wudingjian/rkllm_chat/issues
+hub.docker：https://hub.docker.com/r/jsntwdj/rkllm_chat
