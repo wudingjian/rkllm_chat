@@ -198,7 +198,8 @@ cp librkllmrt.so /usr/lib/librkllmrt.so
 ~~~ ssh
 # 程序目录
 cd ~/llm
-
+# 将当前 shell 进程及其子进程的文件描述符限制设置为 102400
+ulimit -n 102400
 # "./model/Qwen2.5-3B.rkllm " 为转换好的模型路径
 taskset f0 ./llm_demo ./model/Qwen2.5-3B.rkllm  
 ~~~
