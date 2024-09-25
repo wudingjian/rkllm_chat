@@ -61,13 +61,13 @@ wget https://raw.githubusercontent.com/airockchip/rknn-llm/main/rkllm-toolkit/ex
 
 ## 5. 修改test.py中的模型路径
 
-modelpath = '/root/ws/Qwen2.5-3B-Instruct'
+`modelpath = '/root/ws/Qwen2.5-3B-Instruct'`
 
 其中“/root/ws/”为容器内的路径，“Qwen2.5-3B-Instruct” 为下载的模型文件夹
 
 ## 6. 修改test.py中的生成转换模型的名称和路径
 
-ret = llm.export_rkllm("./Qwen2.5-3B.rkllm") 
+`ret = llm.export_rkllm("./Qwen2.5-3B.rkllm") `
 
 当前目录（./model）中生成Qwen2.5-3B.rkllm
 
