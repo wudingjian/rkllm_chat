@@ -170,7 +170,7 @@ GCC_COMPILER_PATH=~/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin/aarch
 ```bash
 bash build-linux.sh
 ```
-rk3588 上的可执行程序llm_demo，在./rkllm_api_demo/build/build_linux_aarch64_Release/
+编译生成的rk3588 上的可执行程序llm_demo目录在./rkllm_api_demo/build/build_linux_aarch64_Release/
 
 
 ### 3. RK3588设备安装rkllm_api_demo
