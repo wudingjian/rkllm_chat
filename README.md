@@ -158,6 +158,7 @@ gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu；下载路径为：GCC_10.2 
 ./rkllm_api_demo/src/main.cpp
 中
     param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3
+    
     param.use_gpu = false;  # 禁止gpu加速
 
 #### 构建
