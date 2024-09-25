@@ -139,9 +139,9 @@ docker-compose up -d
 ~~~
 # 六、聊天web界面
 
-## 浏览器访问 http://ip:8080
+## (一)浏览器访问 http://ip:8080
 
-## 可选其他聊天方式（ssh中演示的demo）
+## （二）可选其他聊天方式（ssh中演示的demo）
 ### 1. rkllm_api_demo 编译(在x86 pc上编译)
 #### 下载rkllm_api_demo
 git clone https://github.com/airockchip/rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
