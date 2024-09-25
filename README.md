@@ -52,10 +52,11 @@ services:
 ~~~ liunx
 docker-compose up -d
 ~~~
-#### 3. 通过魔塔或huggingface下载模型
+#### 3. [魔塔](https://mota.com) 或[Hugging Face](https://huggingface.co)下载模型
 模型放在下载在 ./model 目录
 
-#### 4. 下载转换py程序到./model
+#### 4. 下载转换python程序到./model
+
 https://github.com/airockchip/rknn-llm/blob/main/rkllm-toolkit/examples/huggingface/test.py
 
 #### 5. 修改test.py中的模型路径
