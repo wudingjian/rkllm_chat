@@ -110,10 +110,10 @@ cat /sys/kernel/debug/rknpu/version
 
 如果不转换模型（跳过“二、模型转换”），可以直接下载转好后的rkllm模型
 
-例如：Qwen2.5-3B.rkllm 
+例如：`Qwen2.5-3B.rkllm `
 
-rkllm模型下载链接：https://pan.baidu.com/s/1kIxv488-0IiQdZgDpKO-cw?pwd=up1b 
-提取码：up1b
+`rkllm模型下载链接：https://pan.baidu.com/s/1kIxv488-0IiQdZgDpKO-cw?pwd=up1b 
+提取码：up1b`
 
 下载后的模型文件放在./model目录下
 
