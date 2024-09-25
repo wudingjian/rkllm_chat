@@ -139,7 +139,7 @@ docker-compose up -d
 ~~~
 # 六、聊天web界面
 
-## 浏览器访问 http://容器ip:8080
+## 浏览器访问 http://ip:8080
 
 ## 可选其他聊天方式（ssh中演示的demo）
 ### 1. rkllm_api_demo 编译(在x86 pc上编译)
