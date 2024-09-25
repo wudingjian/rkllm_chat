@@ -141,7 +141,7 @@ docker-compose up -d
 
 ## (一)浏览器访问 http://ip:8080
 
-## （二）可选其他聊天方式（ssh中演示的demo）
+## (二)可选其他聊天方式（ssh中演示的demo）
 ### 1. rkllm_api_demo 编译(在x86 pc上编译)
 #### 下载rkllm_api_demo
 git clone https://github.com/airockchip/rknn-llm/tree/main/rkllm-runtime/examples/rkllm_api_demo
@@ -157,9 +157,9 @@ gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu；下载路径为：GCC_10.2 
 #### 修改配置文件
 ./rkllm_api_demo/src/main.cpp
 中
-    param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3
+`param.num_npu_core = 3; # rk3588 3个核心 由1或2 改成3`
     
-    param.use_gpu = false;  # 禁止gpu加速
+`param.use_gpu = false;  # 禁止gpu加速`
 
 #### 构建
 确保 `build-linux.sh` 脚本中的 `GCC_COMPILER_PATH` 选项配置正确：
