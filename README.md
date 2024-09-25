@@ -185,7 +185,9 @@ bash build-linux.sh
 将编译好的 `llm_demo` 文件和 `librkllmrt.so` 文件推送到RK3588设备：
 ```bash
 编译好的 ./rkllm_api_demo/build/build_linux_aarch64_Release/llm_demo
-仓库中有编译好的 /rkllm_api_demo/llm_demo
+
+★仓库中已有编译好的 /rkllm_api_demo/llm_demo
+
 文件复制到 ~/llm  #目录自行确定
 
 
