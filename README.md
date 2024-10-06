@@ -115,6 +115,8 @@ cat /sys/kernel/debug/rknpu/version
 `rkllm模型下载链接：https://pan.baidu.com/s/1kIxv488-0IiQdZgDpKO-cw?pwd=up1b 
 提取码：up1b`
 
+https://huggingface.co/jsntwdj/rkllm
+
 下载后的模型文件放在./model目录下
 
 # 五、rk3588开发板部署LLM服务端 docker-compose.yml 
